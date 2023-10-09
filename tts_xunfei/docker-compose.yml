@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  tts1:
+    image: tts_xunfei_image
+    ports:
+      - "5001:5000"
+
+  tts2:
+    image: tts_xunfei_image
+    ports:
+      - "5002:5000"
+
+  tts3:
+    image: tts_xunfei_image
+    ports:
+      - "5003:5000"
+
+  dispatcher:
+    build: ./tts_dispatcher
+    ports:
+      - "8080:8080"
+    environment:
+      TTS_INSTANCES: "tts1:5001,tts2:5002,tts3:5003"
