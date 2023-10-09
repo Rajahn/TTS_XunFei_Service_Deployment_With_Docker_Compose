@@ -114,8 +114,8 @@ def on_open(ws, ifly):
 
 
 def generate_audio(text):
-    ifly = Ws_Param(APPID='dec60e28', APISecret='MzMzMGFkYjI2MzAyMjk2MjUzMTRhOTRl',
-                    APIKey='b492175e9919700929dca6b5e0f7dace',
+    ifly = Ws_Param(APPID='xxx', APISecret='xxx',
+                    APIKey='xxx',
                     Text=text)
     websocket.enableTrace(False)
     wsUrl = ifly.create_url()
@@ -126,21 +126,26 @@ def generate_audio(text):
 
 @app.route('/tts', methods=['POST'])
 def tts_api():
-    global tts_in_progress
+    global tts_in_progress  # Accessing the global variable to check the current TTS status
 
-    if tts_in_progress:  # 如果tts已经在运行，返回一个错误消息
+    if tts_in_progress:
         return jsonify({"error": "TTS is already in progress, please wait!"}), 429
 
+    # Extract the input text from the request payload
     data = request.get_json()
-    text = data.get('text')[0]
-    print(text)
-    if not text:
+    inputText = data.get('text')[0]
+    print(inputText)
+
+    # If there's no input text provided in the request, return an error message
+    if not inputText:
         return jsonify({"error": "Text is required!"}), 400
 
-    tts_in_progress = True  # 设置标志为True，表示tts正在执行
-    # time.sleep(30)
-    generate_audio(text)
-    tts_in_progress = False  # 重置标志为False，表示tts已经完成
+
+    tts_in_progress = True
+
+    generate_audio(inputText)  # Call the function to generate audio from text
+
+    tts_in_progress = False
 
     try:
         with open('output.mp3', 'rb') as f:
@@ -151,7 +156,9 @@ def tts_api():
 
 @app.route('/check_tts_status', methods=['GET'])
 def check_tts_status():
-    global tts_in_progress
+    global tts_in_progress  # Accessing the global variable to check the current TTS status
+
+    # Return the current status of the TTS operation (False if ongoing, True if not)
     return jsonify({"status": not tts_in_progress})
 
 if __name__ == "__main__":
