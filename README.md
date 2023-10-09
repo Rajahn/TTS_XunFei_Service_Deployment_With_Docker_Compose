@@ -1,6 +1,7 @@
 
 # **TTS Service Deployment with Docker Compose**
-![image](https://github.com/Rajahn/TTS_XunFei_Service_Deployment_With_Docker_Compose/assets/39303094/9df30994-ab46-4c86-a04e-61e1cd03a536)
+![image](https://github.com/Rajahn/TTS_XunFei_Service_Deployment_With_Docker_Compose/assets/39303094/100198b9-dddb-4ef2-bf3e-dc11163d1b31)
+
 
 ## **1. Overview**
 
@@ -47,9 +48,11 @@ Docker Compose allows us to define and run multi-container applications using a 
 2. One **`dispatcher`** instance.
 
 With a simple **`docker-compose up`** command, all these services will start and interconnect with each other. 
-![image](https://github.com/Rajahn/TTS_XunFei_Service_Deployment_With_Docker_Compose/assets/39303094/572311f3-b999-4827-ae55-99ffb14bc97f)
+![image](https://github.com/Rajahn/TTS_XunFei_Service_Deployment_With_Docker_Compose/assets/39303094/ca67f98f-8df4-4771-89ec-1785dfb23cc3)
+
 And check docker desktop for status
-![image](https://github.com/Rajahn/TTS_XunFei_Service_Deployment_With_Docker_Compose/assets/39303094/5a765291-690c-4050-978e-36b6ca970a4d)
+![image](https://github.com/Rajahn/TTS_XunFei_Service_Deployment_With_Docker_Compose/assets/39303094/c06966b0-0d6e-45f6-966a-06f1bf3bc1fc)
+
 
 
 
